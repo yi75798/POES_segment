@@ -28,8 +28,8 @@ output = pd.DataFrame(columns=['id', 'words'])
 
 # 開始斷詞
 for i in df.index:
-    result = [seg for seg in jieba.cut(
-        df.loc[i, 'Text'].replace(" ", "").replace("　", ''), cut_all=False) if seg not in stopwords]  # 以迴圈一一抓出每個文本並斷詞
+    result = [seg for seg in jieba.cut(df.loc[i, 'Text'].replace(" ", "").replace("　", ''),
+                                       cut_all=False) if seg not in stopwords]  # 以迴圈一一抓出每個文本並斷詞
     # 文本空格先去除
 
     output = output.append(pd.DataFrame({'id': [df.loc[i, 'id']] * len(result),  # 存進output
